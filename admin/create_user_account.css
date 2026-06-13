@@ -1,0 +1,171 @@
+:root {
+  --bg:#0b1220;
+  --sidebar:#020617;
+  --card:#111827;
+  --accent:#3251ff;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --green:#22c55e;
+  --red:#ef4444;
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', sans-serif;
+}
+
+body {
+  display:flex;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* SIDEBAR */
+.sidebar {
+  width:240px;
+  height:100vh;
+  background:var(--sidebar);
+  padding:20px;
+}
+
+.sidebar h2 {
+  color:var(--accent);
+  margin-bottom:30px;
+}
+
+.sidebar a {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px;
+  color:var(--muted);
+  text-decoration:none;
+  border-radius:10px;
+  margin-bottom:10px;
+  transition:0.3s;
+}
+
+.sidebar a:hover {
+  background:var(--accent);
+  color:#000;
+}
+
+.sidebar a.active {
+  background:var(--green);
+  color:#000;
+}
+
+/* MAIN */
+.main {
+  flex:1;
+  padding:30px;
+}
+
+/* CONTAINER (FORM + TABLE) */
+.container {
+  display:flex;
+  gap:20px;
+  align-items:flex-start;
+}
+
+/* CARDS */
+.form-card, .table-card {
+  background:var(--card);
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.4);
+}
+
+/* FORM */
+.form-card {
+  flex:1;
+  min-width:320px;
+}
+
+.form-card h2 {
+  margin-bottom:15px;
+  color:var(--accent);
+}
+
+.form-group {
+  margin-bottom:12px;
+}
+
+input, select {
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:none;
+  background:#1f2937;
+  color:var(--text);
+}
+
+button {
+  width:100%;
+  padding:12px;
+  background:var(--accent);
+  border:none;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* TABLE */
+.table-card {
+  flex:2;
+  min-width:500px;
+}
+
+table {
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+}
+
+th {
+  background:#3251ff;
+  color:#000;
+  padding:10px;
+}
+
+td {
+  padding:10px;
+  border-bottom:1px solid #1f2937;
+}
+
+/* BADGE */
+.badge {
+  padding:3px 8px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:bold;
+}
+
+.hr { background:#38bdf8; color:#000; }
+.employee { background:#22c55e; color:#000; }
+.admin { background:#edbe14; color:#000; }
+
+/* DELETE */
+.delete-btn {
+  background:#ef4444;
+  padding:5px 10px;
+  border-radius:6px;
+  color:#000;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:bold;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .container {
+    flex-direction:column;
+  }
+
+  .form-card,
+  .table-card {
+    width:100%;
+  }
+}

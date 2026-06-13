@@ -1,0 +1,190 @@
+:root {
+  --bg: #0b1220;
+  --sidebar: #020617;
+  --card: #111827;
+  --accent: #3251ff;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --green: #22c55e;
+  --red: #ef4444;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  display: flex;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  background: var(--sidebar);
+  padding: 20px;
+}
+
+.sidebar h2 {
+  color: var(--accent);
+  margin-bottom: 30px;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  color: var(--muted);
+  text-decoration: none;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+.sidebar a.active {
+  background: var(--green);
+  color: #000;
+}
+
+/* MAIN */
+.main {
+  flex: 1;
+  padding: 20px;
+}
+
+/* TOPBAR */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.topbar .icons i {
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+/* CARDS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+  position: relative;
+  transition: 0.3s;
+}
+
+.card h3 {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.card h1 {
+  margin-top: 10px;
+  color: var(--accent);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(50,81,255,0.25);
+}
+
+/* KEEP YOUR ORIGINAL CARD ICON STYLE */
+.card i {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 22px;
+  opacity: 0.3;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 15px;
+}
+
+/* TABLE */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 10px;
+  border-bottom: 1px solid #1f2937;
+}
+
+.badge {
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+.green { background: var(--green); color:#000; }
+.red { background: var(--red); color:#fff; }
+
+.dot {
+  height:10px;
+  width:10px;
+  background:#22c55e;
+  border-radius:50%;
+  display:inline-block;
+  margin-right:6px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.2; }
+  100% { opacity: 1; }
+}
+
+/* AVATAR FLOATING */
+#chatAvatar {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    z-index: 999;
+    animation: float 2s ease-in-out infinite;
+}
+
+#chatAvatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* FLOAT ANIMATION */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0px); }
+}
+
