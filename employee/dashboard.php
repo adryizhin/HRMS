@@ -70,8 +70,16 @@ $assignments = $assignments->get_result();
 <div class="main">
 
 <div class="topbar">
-  <h1>Employee Dashboard</h1>
-  <div>Welcome, <?= $_SESSION['name']; ?></div>
+    <h2>Welcome, <?= $_SESSION['name']; ?></h2>
+  <div style="display:flex; justify-content:flex-end;">
+  <div style= "display:inline-block;
+   padding:8px 18px;
+    background:green;
+    border-radius:20px;
+    color:#fffff;
+    font-weight:bold;
+    font-size:15px;">Employee</div>
+</div>
 </div>
 
 <?php if (isset($_GET['success'])): ?>

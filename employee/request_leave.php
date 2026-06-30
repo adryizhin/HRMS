@@ -1,5 +1,5 @@
 <?php
-require '../auth_check.php';
+require '../includes/auth_check.php';
 checkRole(['employee']);
 require '../config.php';
 require_once __DIR__ . '/../includes/sidebar.php';

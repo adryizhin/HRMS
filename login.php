@@ -70,7 +70,7 @@ session_start();
 
         <div class="field">
           <label for="email">Email address</label>
-          <input type="email" id="email" name="email" placeholder="you@pagecom.com" required>
+          <input type="email" id="email" name="email" placeholder="email@pagecom.com" required>
         </div>
 
         <div class="field">

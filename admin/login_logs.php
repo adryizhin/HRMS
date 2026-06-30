@@ -1,7 +1,7 @@
 <?php
 date_default_timezone_set('Asia/Manila');
 require '../config.php';
-require_once __DIR__ . '/../auth_check.php';
+require_once __DIR__ . '/../includes/auth_check.php';
 require_once __DIR__ . '/../includes/sidebar.php';
 checkRole(['admin']);
 

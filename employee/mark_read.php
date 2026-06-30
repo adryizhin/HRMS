@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../config.php';
-require_once __DIR__ . '/../auth_check.php';
+require_once __DIR__ . '../includes/auth_check.php';
 
 $user_id = (int) $_SESSION['user_id'];
 

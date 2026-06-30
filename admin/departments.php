@@ -1,6 +1,6 @@
 <?php
 require '../config.php';
-require '../includes/auth_check.php';
+require '../includes/auth_check.php';  
 require_once __DIR__ . '/../includes/sidebar.php';
 checkRole(['admin']);
 
