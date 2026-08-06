@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password    = $_POST['password'] ?? '';
     $role        = $_POST['role'] ?? '';
     $department_id = !empty($_POST['department_id']) ? (int) $_POST['department_id'] : null;
-    $work_shift = ($_POST['work_shift'] ?? 'morning') === 'night' ? 'night' : 'morning';
+    $work_shift = 'morning';
 
     // Auto-generate employee_id
     $last = $conn->query("SELECT MAX(id) AS max_id FROM users")->fetch_assoc();
@@ -140,13 +140,6 @@ $departments = $conn->query("
       </select>
     </div>
 
-    <div class="form-group">
-      <select name="work_shift" required>
-        <option value="morning">Morning Shift</option>
-        <option value="night">Night Shift</option>
-      </select>
-    </div>
-
     <button type="submit">Create Account</button>
   </form>
 </div>
@@ -171,7 +164,7 @@ $departments = $conn->query("
         <th>Email</th>
         <th>Role</th>
         <th>Department</th>
-        <th>Shift</th>
+        <th>Schedule</th>
         <th>Action</th>
       </tr>
 
@@ -185,7 +178,7 @@ $departments = $conn->query("
           </span>
         </td>
         <td><?= htmlspecialchars($row['department_name'] ?? 'Unassigned'); ?></td>
-        <td><?= ucfirst(htmlspecialchars($row['work_shift'] ?? 'morning')); ?></td>
+        <td>8:00 AM - 5:00 PM</td>
         <td>
           <a class="delete-btn"
              href="?delete=<?= $row['id']; ?>"

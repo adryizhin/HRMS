@@ -15,14 +15,14 @@ function renderAttendancePage(mysqli $conn, string $role, bool $showAll): void
 
     if ($showAll) {
         $records = $conn->query("
-            SELECT a.*, u.full_name, u.role, u.employee_id, u.work_shift
+            SELECT a.*, u.full_name, u.role, u.employee_id
             FROM attendance a
             JOIN users u ON a.user_id = u.id
             ORDER BY a.attendance_date DESC, a.login_time DESC
         ");
     } else {
         $stmt = $conn->prepare("
-            SELECT a.*, u.full_name, u.role, u.employee_id, u.work_shift
+            SELECT a.*, u.full_name, u.role, u.employee_id
             FROM attendance a
             JOIN users u ON a.user_id = u.id
             WHERE a.user_id = ?
@@ -121,8 +121,7 @@ th {
 <div class="main">
     <h1>Attendance</h1>
     <p class="attendance-note">
-        Morning: present until 8:15 AM, late after 8:15 AM, absent from 12:00 PM onward.
-        Night: present until 8:15 PM, late after 8:15 PM, absent from 12:00 AM onward.
+        Schedule: 8:00 AM to 5:00 PM. Logins at 8:30 AM or later are marked late.
     </p>
 
     <div class="cards">
@@ -159,7 +158,7 @@ th {
                         <th>Role</th>
                     <?php endif; ?>
                     <th>Date</th>
-                    <th>Shift</th>
+                    <th>Schedule</th>
                     <th>Login Time</th>
                     <th>Status</th>
                 </tr>
@@ -173,7 +172,7 @@ th {
                                 <td><?= strtoupper(htmlspecialchars($row['role'])); ?></td>
                             <?php endif; ?>
                             <td><?= date("M d, Y", strtotime($row['attendance_date'])); ?></td>
-                            <td><?= ucfirst(htmlspecialchars($row['shift'])); ?></td>
+                            <td>8:00 AM - 5:00 PM</td>
                             <td><?= date("h:i A", strtotime($row['login_time'])); ?></td>
                             <td><span class="badge <?= htmlspecialchars($row['status']); ?>"><?= htmlspecialchars($row['status']); ?></span></td>
                         </tr>

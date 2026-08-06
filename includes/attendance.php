@@ -50,30 +50,20 @@ function ensureUserShiftColumn(mysqli $conn): void
     $checked = true;
 }
 
-function getAttendanceMark(DateTimeImmutable $loginTime, string $shift): array
+function getAttendanceMark(DateTimeImmutable $loginTime): array
 {
     $date = $loginTime->format('Y-m-d');
-    $shift = $shift === 'night' ? 'night' : 'morning';
     $timezone = $loginTime->getTimezone();
-
-    if ($shift === 'morning') {
-        $shift = 'morning';
-        $shiftDate = $date;
-        $lateCutoff = new DateTimeImmutable($shiftDate . ' 08:15:00', $timezone);
-        $absentCutoff = new DateTimeImmutable($shiftDate . ' 12:00:00', $timezone);
-    } else {
-        $shiftDate = ((int) $loginTime->format('G') < 12)
-            ? $loginTime->modify('-1 day')->format('Y-m-d')
-            : $date;
-        $lateCutoff = new DateTimeImmutable($shiftDate . ' 20:15:00', $timezone);
-        $absentCutoff = (new DateTimeImmutable($shiftDate . ' 00:00:00', $timezone))->modify('+1 day');
-    }
+    $shift = 'morning';
+    $shiftDate = $date;
+    $lateCutoff = new DateTimeImmutable($shiftDate . ' 08:30:00', $timezone);
+    $absentCutoff = new DateTimeImmutable($shiftDate . ' 17:00:00', $timezone);
 
     $status = 'present';
 
     if ($loginTime >= $absentCutoff) {
         $status = 'absent';
-    } elseif ($loginTime > $lateCutoff) {
+    } elseif ($loginTime >= $lateCutoff) {
         $status = 'late';
     }
 
@@ -90,12 +80,7 @@ function recordAttendanceOnLogin(mysqli $conn, int $userId): void
     ensureUserShiftColumn($conn);
 
     $loginTime = new DateTimeImmutable('now', new DateTimeZone('Asia/Manila'));
-    $shiftStmt = $conn->prepare("SELECT work_shift FROM users WHERE id = ? LIMIT 1");
-    $shiftStmt->bind_param("i", $userId);
-    $shiftStmt->execute();
-    $user = $shiftStmt->get_result()->fetch_assoc();
-
-    $mark = getAttendanceMark($loginTime, $user['work_shift'] ?? 'morning');
+    $mark = getAttendanceMark($loginTime);
     $loginAt = $loginTime->format('Y-m-d H:i:s');
 
     $stmt = $conn->prepare("
