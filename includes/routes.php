@@ -24,13 +24,17 @@ function route(string $name): string
         'hr.dashboard' => 'hr/dashboard.php',
         'hr.task_submissions' => 'hr/task_submissions.php',
         'hr.score_submission' => 'hr/score_submission.php',
+        'hr.201_files' => 'hr/201_files.php',
         'hr.leave_requests' => 'hr/hr_leave_requests.php',
         'hr.attendance' => 'hr/attendance.php',
+        'hr.kpi' => 'hr/kpi.php',
         'hr.post_task' => 'hr/post_task.php',
         'employee.dashboard' => 'employee/dashboard.php',
         'employee.tasks' => 'employee/dashboard.php',
+        'employee.documents' => 'employee/documents.php',
         'employee.leave_request' => 'employee/request_leave.php',
         'employee.attendance' => 'employee/attendance.php',
+        'employee.kpi' => 'employee/kpi.php',
     ];
 
     return app_url($routes[$name] ?? $name);
