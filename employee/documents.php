@@ -197,7 +197,7 @@ $documents = $stmt->get_result();
   <div class="task-section-header">
     <div>
       <p class="eyebrow">Employee Records</p>
-      <h2>My 201 Documents</h2>
+      <h2>My 201 Documents</h2>                                                    
     </div>
     <span class="task-count"><?= $documents ? (int) $documents->num_rows : 0; ?> file<?= $documents && $documents->num_rows === 1 ? '' : 's'; ?></span>
   </div>

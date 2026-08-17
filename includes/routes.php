@@ -20,6 +20,7 @@ function route(string $name): string
         'admin.users' => 'admin/create_user_account.php',
         'admin.departments' => 'admin/departments.php',
         'admin.attendance' => 'admin/attendance.php',
+        'admin.payroll' => 'admin/payroll.php',
         'admin.login_logs' => 'admin/login_logs.php',
         'hr.dashboard' => 'hr/dashboard.php',
         'hr.task_submissions' => 'hr/task_submissions.php',
@@ -28,6 +29,7 @@ function route(string $name): string
         'hr.leave_requests' => 'hr/hr_leave_requests.php',
         'hr.attendance' => 'hr/attendance.php',
         'hr.kpi' => 'hr/kpi.php',
+        'hr.payroll' => 'hr/payroll.php',
         'hr.post_task' => 'hr/post_task.php',
         'employee.dashboard' => 'employee/dashboard.php',
         'employee.tasks' => 'employee/dashboard.php',
@@ -35,6 +37,7 @@ function route(string $name): string
         'employee.leave_request' => 'employee/request_leave.php',
         'employee.attendance' => 'employee/attendance.php',
         'employee.kpi' => 'employee/kpi.php',
+        'employee.payroll' => 'employee/payroll.php',
     ];
 
     return app_url($routes[$name] ?? $name);
